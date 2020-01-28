@@ -1,0 +1,8 @@
+# @format
+
+type Mutation {
+	newProduct(data: ProductInput!): Product!
+	updateProduct(filter: ProductFilter!, data: ProductInputUpdate!): Product
+	deleteProduct(filter: ProductFilter!): Product
+	destroyProduct(filter: ProductFilter!): Product
+}

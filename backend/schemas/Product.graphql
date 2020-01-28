@@ -1,0 +1,27 @@
+# @format
+
+type Product {
+	_id: String
+	name: String
+	code: String
+	active: Int
+	images: [Image]
+}
+
+input ProductInput {
+	name: String!
+	code: String!
+	images: [ImageInput!]!
+}
+
+input ProductInputUpdate {
+	name: String
+	code: String
+	active: Boolean
+	images: [ImageInput]
+}
+
+input ProductFilter {
+	_id: String
+	name: String
+}

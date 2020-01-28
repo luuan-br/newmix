@@ -1,0 +1,13 @@
+# @format
+
+type Image {
+	_id: String
+	name: String
+	url_image: String
+	product_id: String
+}
+
+input ImageInput {
+	name: String
+	url_image: String
+}

@@ -1,0 +1,6 @@
+# @format
+
+type Query {
+	products(all: Boolean): [Product]
+	product(filter: ProductFilter): Product
+}
