@@ -2,6 +2,8 @@
 const db = require("../../config/db")
 const uniqid = require("uniqid")
 const { product: getProduct } = require("../Query/Product")
+const { catalog: getCatalog } = require("../Query/Catalog")
+const { category: getCategory } = require("../Query/Category")
 
 const mutations = {
 	async newProduct(_, { data }) {
@@ -21,6 +23,28 @@ const mutations = {
 					url_image: image.url_image,
 					product_id: productID,
 				})
+			}
+
+			if (data.catalogs) {
+				for (let filter of data.catalogs) {
+					let { _id } = await getCatalog(_, { filter })
+
+					await db("catalogs_products").insert({
+						product_id: productID,
+						catalog_id: _id,
+					})
+				}
+			}
+
+			if (data.categories) {
+				for (let filter of data.categories) {
+					let { _id } = await getCategory(_, { filter })
+
+					await db("categories_products").insert({
+						product_id: productID,
+						categories_id: _id, // troca nome da coluna para category
+					})
+				}
 			}
 
 			return db("products")

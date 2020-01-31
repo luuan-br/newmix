@@ -1,6 +1,15 @@
 # @format
 
 type Query {
+	# product querys
 	products(all: Boolean): [Product]
-	product(filter: ProductFilter): Product
+	product(filter: ProductFilter!): Product
+
+	# category querys
+	category(filter: CategoryFilter!): Category
+	categories(all: Boolean): [Categories]
+
+	# catalogs querys
+	catalog(filter: CatalogFilter!): Catalog
+	catalogs(all: Boolean): [Catalogs]
 }

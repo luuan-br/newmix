@@ -1,17 +1,25 @@
 # @format
 
+# // TYPES
+
 type Product {
 	_id: String
 	name: String
 	code: String
-	active: Int
+	active: Boolean
 	images: [Image]
+	catalogs: [Catalogs] # possivelmente criar um novo tipo para melhorar saida
+	categories: [Categories] # possivelmente criar um novo tipo para melhorar saida
 }
+
+# // INPUTS
 
 input ProductInput {
 	name: String!
 	code: String!
 	images: [ImageInput!]!
+	catalogs: [CatalogFilter]
+	categories: [CategoryFilter]
 }
 
 input ProductInputUpdate {

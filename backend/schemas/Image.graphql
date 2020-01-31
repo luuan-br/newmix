@@ -1,11 +1,15 @@
 # @format
 
+# // TYPES
+
 type Image {
 	_id: String
 	name: String
 	url_image: String
 	product_id: String
 }
+
+# // INPUT
 
 input ImageInput {
 	name: String

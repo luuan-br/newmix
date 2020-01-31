@@ -1,8 +1,21 @@
 # @format
 
 type Mutation {
+	# Mutation of products
 	newProduct(data: ProductInput!): Product!
 	updateProduct(filter: ProductFilter!, data: ProductInputUpdate!): Product
 	deleteProduct(filter: ProductFilter!): Product
 	destroyProduct(filter: ProductFilter!): Product
+
+	# Mutation of categories
+	newCategory(data: CategoryInput!): Category!
+	deleteCategory(filter: CategoryFilter!): Category
+	destroyCategory(filter: CategoryFilter!): Category
+	updateCategory(filter: CategoryFilter!, data: CategoryInputUpdate!): Category
+
+	# Mutation of catalogs
+	newCatalog(data: CatalogInput!): Catalog!
+	deleteCatalog(filter: CatalogFilter!): Catalog
+	destroyCatalog(filter: CatalogFilter!): Catalog
+	updateCatalog(filter: CatalogFilter!, data: CatalogInputUpdate!): Catalog
 }

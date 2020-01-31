@@ -2,16 +2,16 @@
 const db = require("../../config/db")
 
 module.exports = {
-	product(_, { filter }) {
+	category(_, { filter }) {
 		try {
 			const { _id, name } = filter
 
 			if (_id) {
-				return db("products")
+				return db("categories")
 					.where({ _id })
 					.first()
 			} else if (name) {
-				return db("products")
+				return db("categories")
 					.where({ name })
 					.first()
 			} else {
@@ -21,12 +21,12 @@ module.exports = {
 			throw new Error(e.sqlMessage)
 		}
 	},
-	products(_, { all }) {
+	categories(_, { all }) {
 		try {
 			if (all && all === true) {
-				return db("products")
+				return db("categories")
 			} else {
-				return db("products").where({ active: 1 })
+				return db("categories").where({ active: 1 })
 			}
 		} catch (e) {
 			throw new Error(e.sqlMessage)

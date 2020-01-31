@@ -1,4 +1,6 @@
 #import Product from 'Product.graphql'
+#import Category from 'Category.graphql'
+#import Catalog from 'Catalog.graphql'
 #import Image from 'Image.graphql'
 #import Query from 'Query.graphql'
 #import Mutation from 'Mutation.graphql'
