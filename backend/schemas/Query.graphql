@@ -11,5 +11,5 @@ type Query {
 
 	# catalogs querys
 	catalog(filter: CatalogFilter!): Catalog
-	catalogs(all: Boolean): [Catalogs]
+	catalogs(all: Boolean, offset: Int, limit: Int): [Catalogs]
 }

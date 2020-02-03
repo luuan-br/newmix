@@ -42,7 +42,7 @@ const mutations = {
 
 					await db("categories_products").insert({
 						product_id: productID,
-						categories_id: _id, // troca nome da coluna para category
+						category_id: _id,
 					})
 				}
 			}

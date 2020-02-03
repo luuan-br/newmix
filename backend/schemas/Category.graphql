@@ -3,29 +3,29 @@
 # // Types
 
 type Categories {
-	_id: String
-	name: String
-	active: Boolean
+  _id: String
+  name: String
+  active: Boolean
 }
 
 type Category {
-	_id: String
-	name: String
-	active: Boolean
-	products: [Product]
+  _id: String
+  name: String
+  active: Boolean
+  products: [Product]
 }
 
 # // INPUTS
 
 input CategoryInput {
-	name: String!
+  name: String!
 }
 
 input CategoryInputUpdate {
-	name: String
+  name: String
 }
 
 input CategoryFilter {
-	_id: String
-	name: String
+  _id: String
+  name: String
 }

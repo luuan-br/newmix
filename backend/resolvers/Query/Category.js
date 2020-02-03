@@ -1,35 +1,35 @@
 /** @format */
-const db = require("../../config/db")
+const db = require("../../config/db");
 
 module.exports = {
 	category(_, { filter }) {
 		try {
-			const { _id, name } = filter
+			const { _id, name } = filter;
 
 			if (_id) {
 				return db("categories")
 					.where({ _id })
-					.first()
+					.first();
 			} else if (name) {
 				return db("categories")
 					.where({ name })
-					.first()
+					.first();
 			} else {
-				return null
+				return null;
 			}
 		} catch (e) {
-			throw new Error(e.sqlMessage)
+			throw new Error(e.sqlMessage);
 		}
 	},
 	categories(_, { all }) {
 		try {
 			if (all && all === true) {
-				return db("categories")
+				return db("categories");
 			} else {
-				return db("categories").where({ active: 1 })
+				return db("categories").where({ active: 1 });
 			}
 		} catch (e) {
-			throw new Error(e.sqlMessage)
+			throw new Error(e.sqlMessage);
 		}
-	},
-}
+	}
+};
