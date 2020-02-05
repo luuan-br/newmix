@@ -1,27 +1,23 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import NavItems from "../NavItems";
 
-const EXCHANGE_RATES = gql`
-	{
-		rates(currency: "USD") {
-			currency
-			rate
-		}
-	}
-`;
+// import icones
+import iconeHome from "../../assets/Home-3.png";
+import iconeCategory from "../../assets/Caminho_16.png";
+import iconeAdmin from "../../assets/privacy.png";
+import iconeHelp from "../../assets/faq-2.png";
+
+import { Container } from "./styles";
 
 export default function Navigation() {
-	const { loading, error, data } = useQuery(EXCHANGE_RATES);
-
-	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error :(</p>;
-
-	return data.rates.map(({ currency, rate }) => (
-		<div key={currency}>
-			<p>
-				{currency}: {rate}
-			</p>
-		</div>
-	));
+	return (
+		<Container id="nav">
+			<ul className="nav-list">
+				<NavItems to="" img={iconeHome} name="Home" />
+				<NavItems to="products" img={iconeCategory} name="Categorias" />
+				<NavItems to="help" img={iconeHelp} name="Suporte" />
+				<NavItems to="dashboard" img={iconeAdmin} name="Log In" />
+			</ul>
+		</Container>
+	);
 }

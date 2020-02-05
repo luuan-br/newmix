@@ -1,6 +1,6 @@
 /** @format */
 
-const db = require("../../config/db")
+const db = require("../../config/db");
 
 module.exports = {
 	products(category) {
@@ -11,7 +11,7 @@ module.exports = {
 				"categories_products.product_id"
 			)
 			.where({
-				categories_id: category._id,
-			})
-	},
-}
+				category_id: category._id
+			});
+	}
+};
