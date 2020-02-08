@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import AsideBar from "../../components/AsideBar";
 import ListItem from "../../components/AsideItems";
-import ShowcaseProductsCatalog from "../../components/ShowcaseProductsCatalog";
+import ShowcaseOfCatalogs from "../../components/ShowcaseOfCatalogs";
 
 import { List } from "./styles";
 
@@ -34,7 +34,7 @@ export default function Home() {
 				)}
 			</AsideBar>
 			<div>
-				<ShowcaseProductsCatalog id={id} />
+				<ShowcaseOfCatalogs id={id} />
 			</div>
 		</>
 	);

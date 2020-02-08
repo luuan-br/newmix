@@ -2,15 +2,19 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 
+import Showcase from "../Showcase";
+
 // import { Container } from './styles';
 
-export default function ShowcaseProductsCategories({ id }) {
+export default function ShowcaseOfCategories({ id }) {
 	const { loading, error, data } = useQuery(GET_PRODUCTS, {
 		variables: { id: id }
 		// fetchPolicy: "cache-and-network"
 	});
 
-	if (data && data.category === null) return "sem produtos";
+	const type = "category";
+
+	if (data && data[type] == null) return "sem produtos";
 
 	return (
 		<>
@@ -18,28 +22,9 @@ export default function ShowcaseProductsCategories({ id }) {
 
 			{error && <p>error: {error.message}</p>}
 
-			<h1>{data && data.category && data.category.name}</h1>
+			<h1>{data && data[type]?.name}</h1>
 
-			<ul>
-				{data &&
-					data.category &&
-					data.category.products.map(
-						({ _id, name, code, images }) => (
-							<li key={_id}>
-								{name}
-								{code}
-								<ul>
-									{images.map(({ _id, name, url_image }) => (
-										<li key={_id}>
-											{name}
-											{url_image}
-										</li>
-									))}
-								</ul>
-							</li>
-						)
-					)}
-			</ul>
+			{data && data[type] && <Showcase type={type} data={data} />}
 		</>
 	);
 }

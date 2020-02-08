@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 
 import AsideBar from "../../components/AsideBar";
-import ListItem from "../../components/AsideItems";
-import InputSelectCatalogs from "../../components/InputSelectCatalogs";
-import InputSelectCategories from "../../components/InputSelectCategories";
+import { ListConteiner, ListItem } from "../../components/List";
 
-import { List } from "./styles";
+import Input from "../../components/Input";
+import Select from "../../components/Select";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+	root: {
+		"& .MuiTextField-root": {
+			margin: theme.spacing(1),
+			width: "50%"
+		}
+	}
+}));
 
 export default function Dashboard() {
 	const [changeComponent, setChageComponet] = useState("products");
+	const classes = useStyles();
+
 	return (
 		<>
 			<AsideBar>
-				<List>
+				<ListConteiner>
 					<ListItem
 						item={{ name: "cadastra Produto" }}
 						onClick={() => setChageComponet("products")}
@@ -25,14 +36,20 @@ export default function Dashboard() {
 						item={{ name: "cadastra Catalogo" }}
 						onClick={() => setChageComponet("catelogs")}
 					/>
-				</List>
+				</ListConteiner>
 			</AsideBar>
+
 			<div render={changeComponent}>
 				{changeComponent === "products" && (
-					<div>
-						<InputSelectCategories />
-						<InputSelectCatalogs />
-					</div>
+					<form
+						className={classes.root}
+						noValidate
+						autoComplete="off"
+					>
+						<Input id="name-input" label="Nome" />
+						<Input id="code-input" label="codigo" />
+						<Select />
+					</form>
 				)}
 				{changeComponent === "categories" && <p>categorias</p>}
 				{changeComponent === "catelogs" && <p>catalogos</p>}
