@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import AsideBar from "../../components/AsideBar";
 import { ListConteiner, ListItem } from "../../components/List";
 
+import SelectCategories from "../../components/SelectCategories";
+import SelectCatlogs from "../../components/SelectCatalogs";
 import Input from "../../components/Input";
-import Select from "../../components/Select";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -48,7 +49,8 @@ export default function Dashboard() {
 					>
 						<Input id="name-input" label="Nome" />
 						<Input id="code-input" label="codigo" />
-						<Select />
+						<SelectCategories />
+						<SelectCatlogs />
 					</form>
 				)}
 				{changeComponent === "categories" && <p>categorias</p>}

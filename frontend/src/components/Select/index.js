@@ -37,19 +37,6 @@ const MenuProps = {
 	}
 };
 
-const names = [
-	"Oliver Hansen",
-	"Van Henry",
-	"April Tucker",
-	"Ralph Hubbard",
-	"Omar Alexander",
-	"Carlos Abbott",
-	"Miriam Wagner",
-	"Bradley Wilkerson",
-	"Virginia Andrews",
-	"Kelly Snyder"
-];
-
 function getStyles(name, personName, theme) {
 	return {
 		fontWeight:
@@ -59,7 +46,7 @@ function getStyles(name, personName, theme) {
 	};
 }
 
-const MultipleSelect = () => {
+const MultipleSelect = ({ options, name }) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [personName, setPersonName] = React.useState([]);
@@ -68,20 +55,11 @@ const MultipleSelect = () => {
 		setPersonName(event.target.value);
 	};
 
-	// const handleChangeMultiple = event => {
-	// 	const { options } = event.target;
-	// 	const value = [];
-	// 	for (let i = 0, l = options.length; i < l; i += 1) {
-	// 		if (options[i].selected) {
-	// 			value.push(options[i].value);
-	// 		}
-	// 	}
-	// 	setPersonName(value);
-	// };
-
 	return (
 		<FormControl className={classes.formControl}>
-			<InputLabel id="demo-mutiple-chip-label">Chip</InputLabel>
+			<InputLabel id="demo-mutiple-chip-label">
+				{name ?? "Select..."}
+			</InputLabel>
 			<Select
 				labelId="demo-mutiple-chip-label"
 				id="demo-mutiple-chip"
@@ -102,9 +80,9 @@ const MultipleSelect = () => {
 				)}
 				MenuProps={MenuProps}
 			>
-				{names.map(name => (
+				{options.map(({ name, _id }) => (
 					<MenuItem
-						key={name}
+						key={_id}
 						value={name}
 						style={getStyles(name, personName, theme)}
 					>
